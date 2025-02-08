@@ -27,6 +27,17 @@ This would be the same scenario as option 3, excpet we have the SDWAN device in 
 > [!NOTE]
 > Although this covers vWAN to vWAN connection options, the remote side could be a regular vnet in hub+spoke topology as well. For Option 1 if that was case, we could add BGP as we would be able to change the non-vhub virtual network gateway ASN on the remote vnet gateway. For Option 2 though, in order to allow the MSEE hairpin with non-vwan vnets, you would need to allow the hair-pinning on both sides, the vhub + the remote virutal network gateway! On new deployments would block the MSEE hairpinning by default, so it must manually allowed!
 
+# Allow MSEE Hairpin between vWAN and non vWAN vnets (Option 2 -Modified)
+ vHub side:
+ <br>
+ ![image](https://github.com/user-attachments/assets/654d1707-bac5-4b1a-8122-caaceb48404e)
+ <br>
+ Express-Route Gatway -Regular Vnet:
+ <br>
+ ![image](https://github.com/user-attachments/assets/13b7725c-244d-427a-b968-f8b0820ad21e)
+
+
+
 
 
 
