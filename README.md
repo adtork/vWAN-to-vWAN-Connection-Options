@@ -4,6 +4,12 @@ This artcile explains the various conection options available to connect two dif
 # Option 1: Native Azure S2S IPSec Tunnels
 In this option customers can simply provision Azure Virutal Network Gateways on each vhub in each vWAN environment to connect two different vWAN environments. Its important to note that today you cannot change the vWAN virtual Network Gateway ASN, which is 65515.This is hardcoded inside the vhub gateway config. At at later date, there should be an option to change the Virutal Network Gateway ASN. For this reason, you cannot do BGP over IPSEC due to BGP loop prevention and seeing its own ASN in the path. The remote vhub will receive routes from the source vhub with 65515 in the AS-PATH and BGP will drop that due to loop prevention. Therefore if you want to connect two different vWAN environments, the tunnels need to be IKEv1 or IKEv2, but no BGP option. The other thing to note is max throughpu you can get per tunnel is 2.4Gbps, and this is an SDN limitation. This can be increased by "N" number of tunnels. 
 
+> [!NOTE]
+As mentioend above on vWAN gateways we cannot change the default 65515 ASN today:
+
+![image](https://github.com/user-attachments/assets/872b5cf8-f07d-41a8-aecd-39b042bdd02c)
+
+
 ![image](https://github.com/user-attachments/assets/59630f3e-18e6-48b5-a14b-8ae821952151)
 
 # Option 2: ExpressRoute Using MSEE Hair-Pinning
