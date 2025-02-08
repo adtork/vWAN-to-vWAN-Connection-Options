@@ -1,7 +1,4 @@
 # vWAN-to-vWAN-Connection-Options
-
-
-# Intro
 This artcile explains the various conection options available to connect two different Virtual WAN environments. Often customers who are not using high bandwith links like Express-Route because of cost want other options to connect different Virtual Wan Environments! They also might have SDWan links that they already use to connect to On-Prem and want to continue with that method! 
 
 # Option 1: Native Azure S2S IPSec Tunnels
