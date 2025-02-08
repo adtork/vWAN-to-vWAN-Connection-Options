@@ -31,6 +31,7 @@ This would be the same scenario as option 3, excpet we have the SDWAN device in 
  <br>
  ![image](https://github.com/user-attachments/assets/654d1707-bac5-4b1a-8122-caaceb48404e)
  <br>
+ <br>
  Express-Route Gatway -Regular Vnet:
  <br>
  ![image](https://github.com/user-attachments/assets/13b7725c-244d-427a-b968-f8b0820ad21e)
