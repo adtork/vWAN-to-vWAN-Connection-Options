@@ -10,7 +10,9 @@ In this option customers can simply provision Azure Virutal Network Gateways on 
 ![image](https://github.com/user-attachments/assets/59630f3e-18e6-48b5-a14b-8ae821952151)
 
 # Option 2: ExpressRoute Using MSEE Hair-Pinning
-This option is also using Azure native solutions. If there is already an Express-Route circuit provisioned, the customer can simply hook the vhubs in each vWAN environment to the same express-route circuit. Just like regular hub+spoke, when vnets are connected to the same circuit the egress point is the MSEE at the pop location. So, traffic between each vhub in different vWANs will simply hairpin down the the Azure MSEEs and each pop location before ingressing to the remote vhub. Simmilar to option 1, this is easy to setup but is not ideal due to added latency due to hairpinning, and the taxing of the remote gateway on the ingress flow path. If the circuit is a direct port circuit, fast-path can be used on the vhub gateways in order to bypass the gateway for inbound flows.
+This option is also using Azure native solutions. If there is already an Express-Route circuit provisioned, the customer can simply hook the vhubs in each vWAN environment to the same express-route circuit. Just like regular hub+spoke, when vnets are connected to the same circuit the egress point is the MSEE at the pop location. So, traffic between each vhub in different vWANs will simply hairpin down the the Azure MSEEs and each pop location before ingressing to the remote vhub. Simmilar to option 1, this is easy to setup but is not ideal due to added latency due to hairpinning, and the taxing of the remote gateway on the ingress flow path. 
+> [!NOTE]
+If the circuit is a direct port circuit, fast-path can be used on the vhub gateways in order to bypass the gateway for inbound flows.
 
 ![image](https://github.com/user-attachments/assets/17258a2f-de52-4103-8b8c-022e27a06cbb)
 
@@ -25,7 +27,7 @@ This would be the same scenario as option 3, excpet we have the SDWAN device in 
 ![image](https://github.com/user-attachments/assets/c6ab9df5-68db-4c20-99fd-d72d9f0bd1cb)
 
 > [!NOTE]
-> Although this covers vWAN to vWAN connection options, the remote side could be a regular vnet in hub+spoke topology as well. For Option 1 if that was case, we could add BGP as we would be able to change the non-vhub virtual network gateway ASN on the remote vnet gateway. For Option 2 though, in order to allow the MSEE hairpin with non-vwan vnets, you would need to allow the hair-pinning on both sides, the vhub + the remote virutal network gateway! On new deployments would block the MSEE hairpinning by default, so it must manually allowed!
+> Although this covers vWAN to vWAN connection options, the remote side could be a regular vnet in hub+spoke topology as well. For Option 1 if that was case, we could add BGP as we would be able to change the non-vhub virtual network gateway ASN on the remote vnet gateway. For Option 2 though, in order to allow the MSEE hairpin with non-vwan vnets, you would need to allow the hair-pinning on both sides, the vhub + the remote virutal network gateway! On new deployments MSEE hairpinning is blocked by default, it must manually allowed!
 
 # Allow MSEE Hairpin between vWAN and non vWAN vnets (Option 2 -Modified)
  vHub side:
