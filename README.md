@@ -9,7 +9,6 @@ In this option customers can simply provision Azure Virutal Network Gateways on 
 
 ![image](https://github.com/user-attachments/assets/59630f3e-18e6-48b5-a14b-8ae821952151)
 
-
 # Option 2: ExpressRoute Using MSEE Hair-pinning
 This option is also using Azure native solutions. If there is already an Express-Route circuit provisioned, the customer can simply hook the vhubs in each vWAN environment to the same express-route circuit. Just like regular hub+spoke, when vnets are connected to the same circuit the egress point is the MSEE at the pop location. So, traffic between each vhub in different vWANs will simply hairpin down the the Azure MSEEs and each pop location before ingressing to the remote vhub. Simmilar to option 1, this is easy to setup but is not ideal due to added latency due to hairpinning, and the taxing of the remote gateway on the ingress path. If the circuit is a direct port circuit, fast-path can be used on the vhub gateways in order to bypass the gateway for inbound flows. So, overall cons to this approach is hairpinning behavior. 
 
